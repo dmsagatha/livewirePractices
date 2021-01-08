@@ -40,7 +40,9 @@
             @foreach ($orderProducts as $index => $orderProduct)
               <tr>
                 <td>
-                  <select name="orderProducts[{{ $index }}][product_id]" class="form-control">
+                  <select name="orderProducts[{{ $index }}][product_id]"
+                    wire:model="orderProducts.{{ $index }}.product_id"
+                    class="form-control">
                     <option value="">-- Elegir producto --</option>
                     @foreach ($allProducts as $product)
                       <option value="{{ $product->id }}">
@@ -50,11 +52,14 @@
                   </select>
                 </td>
                 <td>
-                  <input type="number" name="orderProducts[{{ $index }}][quantity]"
-                    class="form-control" value="{{ $orderProduct['quantity'] }}"
+                  <input type="number" 
+                    name="orderProducts[{{ $index }}][quantity]"
+                    class="form-control" 
+                    wire:model="orderProducts.{{ $index }}.quantity"
                   >
                 </td>
                 <td>
+                  <a href="#" wire:click.prevent="removeProduct({{ $index }})">Eliminar</a>
                 </td>
               </tr>
             @endforeach
@@ -63,6 +68,9 @@
 
         <div class="row">
           <div class="col-md-12">
+            <button class="btn btn-sm btn-secondary" wire:click.prevent="addProduct">
+              + Adicionar otro producto
+            </button>
           </div>
         </div>
       </div>
