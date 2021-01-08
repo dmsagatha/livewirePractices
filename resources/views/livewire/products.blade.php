@@ -30,7 +30,7 @@
       <div class="card-body">
         <table class="table" id="products_table">
           <thead>
-            <tr>
+            <tr class="text-center">
               <th>Producto</th>
               <th>Cantidad</th>
               <th></th>
@@ -59,7 +59,9 @@
                   >
                 </td>
                 <td>
-                  <a href="#" wire:click.prevent="removeProduct({{ $index }})">Eliminar</a>
+                  <a href="#" class="btn btn-sm btn-danger"
+                    wire:click.prevent="removeProduct({{ $index }})">
+                    <i class="fas fa-minus"></i>  Fila</a>
                 </td>
               </tr>
             @endforeach
@@ -67,9 +69,9 @@
         </table>
 
         <div class="row">
-          <div class="col-md-12">
-            <button class="btn btn-sm btn-secondary" wire:click.prevent="addProduct">
-              + Adicionar otro producto
+          <div class="col-md-12 text-center">
+            <button class="btn btn-sm btn-success" wire:click.prevent="addProduct">
+              <i class="fa fa-plus"> Otro producto</i>
             </button>
           </div>
         </div>

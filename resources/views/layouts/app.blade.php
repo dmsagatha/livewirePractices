@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
-
+    
+    !-- Font Awesome 5.13 -->
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
