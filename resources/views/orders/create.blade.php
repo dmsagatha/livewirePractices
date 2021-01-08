@@ -5,13 +5,17 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
 
-        @if (session('success'))
-          {{ session('success') }}
+        @if ($errors->any())
+          <ul>
+            @foreach ($errors as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
         @endif
-        
+
         <div class="card">
           <div class="card-header">Pedidos</div>
-
+          
           <div class="card-body">
             @livewire('products')
           </div>

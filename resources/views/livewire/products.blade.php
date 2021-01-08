@@ -1,10 +1,18 @@
 <div>
   <form action="{{ route('orders.store') }}" method="POST">
     @csrf
+
+    <div class="form-group {{ $errors->has('order_number') ? 'has-error' : '' }}">
+      Número de Orden
+      <input type="text" name="order_number" class="form-control"
+      value="{{ old('order_number') }}">
+
+      {!! $errors->first('order_number', '<small>:message</small>') !!}
+    </div>
     <div class="form-group {{ $errors->has('customer_name') ? 'has-error' : '' }}">
       Nombre
       <input type="text" name="customer_name" class="form-control"
-      value="{{ old('customer_name') }}" required>
+      value="{{ old('customer_name') }}">
       @if($errors->has('customer_name'))
         <em class="invalid-feedback">
           {{ $errors->first('customer_name') }}
@@ -52,9 +60,9 @@
                   </select>
                 </td>
                 <td>
-                  <input type="number" 
+                  <input type="number"
                     name="orderProducts[{{ $index }}][quantity]"
-                    class="form-control" 
+                    class="form-control"
                     wire:model="orderProducts.{{ $index }}.quantity"
                   >
                 </td>
@@ -78,7 +86,7 @@
       </div>
     </div>
     <br />
-    
+
     <div class="text-center mb-3">
       <input class="btn btn-primary" type="submit" value="Guardar Orden">
     </div>
