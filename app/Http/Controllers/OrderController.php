@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -26,6 +27,8 @@ class OrderController extends Controller
       );
     }
 
-    return 'Orden creada satisfactoriamente!';
+    //return 'Orden creada satisfactoriamente!';
+    // return Redirect::back()->with('success', 'Pedido creado satisfactoriamente!');
+    return back()->withSuccess('Orden creada satisfactoriamente!');
   }
 }

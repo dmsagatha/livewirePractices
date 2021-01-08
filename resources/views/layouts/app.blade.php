@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
     
-    !-- Font Awesome 5.13 -->
+    <!-- Font Awesome 5.13 -->
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
