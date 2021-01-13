@@ -7,27 +7,21 @@
       <input type="text" name="order_number" class="form-control"
       value="{{ old('order_number') }}">
 
-      {!! $errors->first('order_number', '<small>:message</small>') !!}
+      {!! $errors->first('order_number', '<small class="text-danger">:message</small>') !!}
     </div>
     <div class="form-group {{ $errors->has('customer_name') ? 'has-error' : '' }}">
       Nombre
       <input type="text" name="customer_name" class="form-control"
       value="{{ old('customer_name') }}">
-      @if($errors->has('customer_name'))
-        <em class="invalid-feedback">
-          {{ $errors->first('customer_name') }}
-        </em>
-      @endif
+
+      {!! $errors->first('customer_name', '<small class="text-danger">:message</small>') !!}
     </div>
     <div class="form-group {{ $errors->has('customer_email') ? 'has-error' : '' }}">
       Correo electrónico
       <input type="email" name="customer_email" class="form-control"
       value="{{ old('customer_email') }}">
-      @if($errors->has('customer_email'))
-        <em class="invalid-feedback">
-          {{ $errors->first('customer_email') }}
-        </em>
-      @endif
+
+      {!! $errors->first('customer_email', '<small class="text-danger">:message</small>') !!}
     </div>
 
     <div class="card">
