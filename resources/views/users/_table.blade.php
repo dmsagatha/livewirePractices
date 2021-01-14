@@ -2,11 +2,11 @@
 
 <table class="table table-bordered mt-5">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th>No.</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Action</th>
+      <th>Nombre</th>
+      <th>Correo Electrónico</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -15,8 +15,8 @@
         <td>{{ $value->id }}</td>
         <td>{{ $value->name }}</td>
         <td>{{ $value->email }}</td>
-        <td>
-          Acciones
+        <td class="text-center" style="display-inline">
+          <button wire:click="destroy({{ $value->id }})" class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
     @endforeach

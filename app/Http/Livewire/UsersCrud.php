@@ -12,10 +12,15 @@ class UsersCrud extends Component
 
   protected $paginationTheme = 'bootstrap';
 
+  public function destroy($id)
+  {
+    User::destroy($id);
+  }
+
   public function render()
   {
     return view('livewire.users-crud', [
-      'users' => User::paginate(10)
+      'users' => User::orderBy('name')->paginate(10)
     ]);
   }
 }
