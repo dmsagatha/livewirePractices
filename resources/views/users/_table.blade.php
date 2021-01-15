@@ -31,4 +31,4 @@
   </div>
 </table>
 
-{{ $users->links() }}</p>
+{{ $users->links() }}

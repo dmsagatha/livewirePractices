@@ -4,14 +4,18 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UsersModal extends Component
 {
-    public $users;
+  use WithPagination;
 
-    public function render()
-    {
-        $this->users = User::all();
-        return view('livewire.users-modal');
-    }
+  protected $paginationTheme = 'bootstrap';
+
+  public function render()
+  {
+    return view('livewire.users-modal', [
+      'users' => User::orderBy('name')->paginate(),
+    ]);
+  }
 }

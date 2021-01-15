@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>Información de los usuarios</h3>
+  <div class="card">
+    <h1 class="card-header text-center">CRUD de Usuarios con Modal</h1>
 
-    <div>
+    <div class="card-body">
       @livewire('users-modal')
     </div>
+  </div>
 @endsection
