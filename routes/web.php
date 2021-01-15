@@ -11,7 +11,7 @@ Route::get('/', function () {
 Route::resource('orders', OrderController::class);
 
 // Rimorsoft Online - Dos opciones
-Route::view('/users', 'users.users');
+Route::view('/users', 'users.users')->name('users');
 
 //https://www.nicesnippets.com/blog/laravel-livewire-crud-with-bootstrap-modal-example
 //Route::get('users', Users::class);

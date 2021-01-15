@@ -1,4 +1,6 @@
-<h3>Nuevo Usuario</h3>
+<h3 class="pb-4 mb-4 font-italic">
+ Editar Usuario
+</h3>
 
 @include('users._form')
 
