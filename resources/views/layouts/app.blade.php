@@ -33,7 +33,7 @@
                 <a class="nav-link" href="{{ route('users') }}">Usuarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Usuario con Modal</a>
+                <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
             </ul>
           </div>
