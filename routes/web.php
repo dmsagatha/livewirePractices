@@ -14,5 +14,4 @@ Route::resource('orders', OrderController::class);
 Route::view('/', 'users.users')->name('users');
 
 //https://www.nicesnippets.com/blog/laravel-livewire-crud-with-bootstrap-modal-example
-//Route::get('users', Users::class);
 Route::view('/users-modal', 'users-modal.users')->name('usersModal');

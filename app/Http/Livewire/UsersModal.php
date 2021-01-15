@@ -14,7 +14,7 @@ class UsersModal extends Component
 
   public function render()
   {
-    return view('livewire.users-modal', [
+    return view('users-modal.users-modal', [
       'users' => User::orderBy('name')->paginate(),
     ]);
   }

@@ -29,10 +29,10 @@
               <li class="nav-item active">
                 <a class="nav-link" aria-current="page" href="{{ route('orders.create') }}">Pedidos</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="{{ route('users') }}">Usuarios</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
             </ul>
