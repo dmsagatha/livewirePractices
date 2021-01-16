@@ -80,12 +80,6 @@ class UsersModal extends Component
     }
   }
 
-  public function cancel()
-  {
-    $this->updateMode = false;
-    $this->resetInputFields();
-  }
-
   public function delete($id)
   {
     if ($id) {
