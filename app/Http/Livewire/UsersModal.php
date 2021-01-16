@@ -12,10 +12,10 @@ class UsersModal extends Component
 
   protected $paginationTheme = 'bootstrap';
 
+  public $ids;
   public $name;
   public $email;
   public $password;
-  public $ids;
 
   public function render()
   {
@@ -41,10 +41,56 @@ class UsersModal extends Component
 
     User::create($validatedDate);
 
-    session()->flash('message', 'Usuario creado satisfactoriamente.');
+    session()->flash('message', 'Usuario creado satisfactoriamente!');
 
     $this->resetInputFields();
 
     $this->emit('userStore'); // Cerrar el modal usando jquery (app)
+  }
+
+  public function edit($id)
+  {
+    $user           = User::where('id', $id)->first();
+    $this->ids      = $user->id;
+    $this->name     = $user->name;
+    $this->email    = $user->email;
+    $this->password = $user->password;
+  }
+
+  public function update()
+  {
+    $this->validate([
+      'name'  => 'required',
+      'email' => 'required|email',
+    ]);
+
+    if ($this->ids) {
+      $user = User::find($this->ids);
+      $user->update([
+        'name'     => $this->name,
+        'email'    => $this->email,
+        'password' => $this->password,
+      ]);
+
+      session()->flash('message', 'Usuario actualizado satisfactoriamente!');
+
+      $this->resetInputFields();
+
+      $this->emit('userUpdated'); // Cerrar el modal usando jquery (app)
+    }
+  }
+
+  public function cancel()
+  {
+    $this->updateMode = false;
+    $this->resetInputFields();
+  }
+
+  public function delete($id)
+  {
+    if ($id) {
+      User::where('id', $id)->delete();
+      session()->flash('message', 'Usuario eliminado satisfactoriamente!');
+    }
   }
 }

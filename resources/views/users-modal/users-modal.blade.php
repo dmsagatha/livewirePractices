@@ -8,6 +8,7 @@
   </h3>
 
     @include('users-modal.create')
+    @include('users-modal.update')
 
     @if (session()->has('message'))
       <div class="alert alert-success" style="margin-top:30px;">x
@@ -32,7 +33,15 @@
               <td>{{ $value->id }}</td>
               <td>{{ $value->name }}</td>
               <td>{{ $value->email }}</td>
-              <td class="text-center">Acciones</td>
+              <td class="text-center" style="display-inline">
+                <a wire:click.prevent="edit({{ $value->id }})" class="teal-text" title="Actualizar" data-toggle="modal" data-target="#updateUserModal">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a type="button"
+                  wire:click.prevent="delete({{ $value->id }})" class="btn-sm text-danger" title="Eliminar">
+                  <i class="fa fa-times"></i>
+                </a>
+              </td>
             </tr>
           @endforeach
         </tbody>

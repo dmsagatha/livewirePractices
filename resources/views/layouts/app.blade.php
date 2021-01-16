@@ -79,7 +79,7 @@
         </div>
       </div>
     </footer>
-    
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @livewireScripts
@@ -87,6 +87,9 @@
     <script type="text/javascript">
       window.livewire.on('userStore', () => {
         $('#addUserModal').modal('hide');
+      });
+      window.livewire.on('userUpdated', () => {
+        $('#updateUserModal').modal('hide');
       });
     </script>
   </body>
