@@ -1,5 +1,19 @@
 <div>
-  <h3 class="card-title">Listado de usuarios</h3>
+  <h3 class="card-title">
+    Listado de usuarios
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+      Crear Usuario
+    </button>
+  </h3>
+
+    @include('users-modal.create')
+
+    @if (session()->has('message'))
+      <div class="alert alert-success" style="margin-top:30px;">x
+        {{ session('message') }}
+      </div>
+    @endif
 
   @if (! $users->isEmpty())
     <div class="table-responsive-sm">

@@ -79,15 +79,15 @@
         </div>
       </div>
     </footer>
-
-    <script src="{{ mix('js/app.js') }}"></script>
+    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     @livewireScripts
 
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
       window.livewire.on('userStore', () => {
         $('#addUserModal').modal('hide');
       });
-    </script> --}}
+    </script>
   </body>
 </html>
