@@ -80,6 +80,14 @@
       </div>
     </footer>
 
+    <script src="{{ mix('js/app.js') }}"></script>
+
     @livewireScripts
+
+    {{-- <script type="text/javascript">
+      window.livewire.on('userStore', () => {
+        $('#addUserModal').modal('hide');
+      });
+    </script> --}}
   </body>
 </html>
