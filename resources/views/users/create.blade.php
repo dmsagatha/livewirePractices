@@ -1,9 +1,9 @@
-<h3 class="pb-4 mb-4 font-italic">
-  Nuevo Usuario
-</h3>
+<h4 class="card-header font-italic">Nuevo Usuario</h4>
 
-@include('users._form')
+<div class="card-body">
+  @include('users._form')
 
-<button wire:click="store" class="btn btn-primary">
-  Guardar
-</button>
+  <button wire:click="store" class="btn btn-primary">
+    Guardar
+  </button>
+</div>

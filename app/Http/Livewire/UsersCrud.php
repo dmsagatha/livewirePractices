@@ -27,7 +27,6 @@ class UsersCrud extends Component
 
   public function store()
   {
-    // Opción 1
     $this->validate([
       'name' => 'required',
       'email' => 'required|email|unique:users',
@@ -41,23 +40,10 @@ class UsersCrud extends Component
     ]);
 
     $this->resetInputFields();
-
-    // Opción 2
-    /* $validatedDate = $this->validate([
-      'name' => 'required',
-      'email' => 'required|email|unique:users',
-      'password' => 'required',
-    ]);
-
-    User::create($validatedDate);
-    session()->flash('message', 'Usuario creado satisfactoriamente.');
-    $this->resetInputFields();
-    $this->emit('userStore'); */ // Close model to using to jquery
   }
 
   public function edit($id)
   {
-    // Opción 1
     $user = User::find($id);
 
     $this->user_id = $user->id;
@@ -66,19 +52,10 @@ class UsersCrud extends Component
     $this->password = $user->password;
 
     $this->view = 'edit';
-
-    // Opción 2
-    /* $this->updateMode = true;
-    $user = User::where('id', $id)->first();
-    $this->user_id = $id;
-    $this->name = $user->name;
-    $this->email = $user->email; */
   }
 
   public function update()
   {
-    // Opción 1
-
     $this->validate([
       'name' => 'required',
       'email' => 'required|email',
@@ -93,22 +70,6 @@ class UsersCrud extends Component
     ]);
 
     $this->default();
-
-    // Opción 2
-    /* $validatedDate = $this->validate([
-      'name' => 'required',
-      'email' => 'required|email',
-    ]);
-    if ($this->user_id) {
-      $user = User::find($this->user_id);
-      $user->update([
-        'name' => $this->name,
-        'email' => $this->email,
-      ]);
-      $this->updateMode = false;
-      session()->flash('message', 'Users Updated Successfully.');
-      $this->resetInputFields();
-    } */
   }
 
   public function default()

@@ -29,11 +29,11 @@
               <li class="nav-item active">
                 <a class="nav-link" aria-current="page" href="{{ route('orders.create') }}">Pedidos</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="{{ route('users') }}">Usuarios</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Usuario con Modal</a>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
             </ul>
           </div>
@@ -80,6 +80,17 @@
       </div>
     </footer>
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     @livewireScripts
+
+    <script type="text/javascript">
+      window.livewire.on('userStore', () => {
+        $('#addUserModal').modal('hide');
+      });
+      window.livewire.on('userUpdated', () => {
+        $('#updateUserModal').modal('hide');
+      });
+    </script>
   </body>
 </html>
