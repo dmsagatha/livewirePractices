@@ -15,6 +15,7 @@ class UsersTable extends Component
   public $perPage = 10;
   public $sortField = 'name';
   public $sortAsc = true;
+  public $search = '';
 
   public function sortBy($field)
   {
@@ -32,7 +33,7 @@ class UsersTable extends Component
   public function render()
   {
     return view('users-table.users-table', [
-      'users' => User::query()
+      'users' => User::search($this->search)
         ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
         ->paginate($this->perPage),
     ]);

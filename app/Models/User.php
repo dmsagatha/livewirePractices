@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Hash;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +39,7 @@ class User extends Authenticatable
    */
   protected $casts = [
     'email_verified_at' => 'datetime',
+    'created_at' => 'date'
   ];
 
   /**
@@ -52,5 +52,12 @@ class User extends Authenticatable
     if ($input) {
       $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
     }
+  }
+
+  public static function search($query)
+  {
+    return empty($query) ? static::query()
+        : static::where('name', 'like', '%' . $query . '%')
+            ->orWhere('email', 'like', '%' . $query . '%');
   }
 }

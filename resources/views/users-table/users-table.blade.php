@@ -1,10 +1,4 @@
 <div>
-  {{-- <input wire:model="search" type="text" placeholder="Buscar...">
-
-  {{ $search }}
-
-  <button wire:click="clear">Limpiar</button> --}}
-  
   <h3 class="card-title">
     Listado de usuarios
 
@@ -24,7 +18,7 @@
     </div>
 
     <div class="col">
-      <input type="text" class="form-control" placeholder="Buscar ....">
+      <input wire:model="search" type="text" class="form-control" placeholder="Buscar ....">
     </div>
   </div>
 
@@ -51,14 +45,21 @@
                 @include('includes._sort-icon', ['field' => 'email'])
               </a>
             </th>
+            <th>
+              <a wire:click.prevent="sortBy('created_at')" href="#">
+                CREACION
+                @include('includes._sort-icon', ['field' => 'created_at'])
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
           @foreach($users as $value)
             <tr>
-              <td>{{ $value->id }}</td>
+              <td class="text-center">{{ $value->id }}</td>
               <td>{{ $value->name }}</td>
               <td>{{ $value->email }}</td>
+              <td class="text-center">{{ $value->created_at->format('Y-m-d') }}</td>
             </tr>
           @endforeach
         </tbody>
