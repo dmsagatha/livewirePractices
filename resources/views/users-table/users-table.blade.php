@@ -34,13 +34,22 @@
         <thead>
           <tr class="text-center">
             <th>
-              <a wire:click.prevent="sortBy('id')" href="#">ID</a>
+              <a wire:click.prevent="sortBy('id')" href="#">
+                ID
+                @include('includes._sort-icon', ['field' => 'id'])
+              </a>
             </th>
             <th>
-              <a wire:click.prevent="sortBy('name')" href="#">NOMBRE COMPLETO</a>
+              <a wire:click.prevent="sortBy('name')" href="#">
+                NOMBRE COMPLETO
+                @include('includes._sort-icon', ['field' => 'name'])
+              </a>
             </th>
             <th>
-              <a wire:click.prevent="sortBy('email')" href="#">CORREO ELECTRONICO</a>
+              <a wire:click.prevent="sortBy('email')" href="#">
+                CORREO ELECTRONICO
+                @include('includes._sort-icon', ['field' => 'email'])
+              </a>
             </th>
           </tr>
         </thead>

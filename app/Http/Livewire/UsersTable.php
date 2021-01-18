@@ -14,18 +14,27 @@ class UsersTable extends Component
 
   public $perPage = 10;
   public $sortField = 'name';
-  public $field;
+  public $sortAsc = true;
 
   public function sortBy($field)
   {
+    /* Si el campos esta activo, reverse el ordenamiento,
+    de lo contrario configure la dirección a 'true' */
+    if ($this->sortField === $field) {
+      $this->sortAsc = ! $this->sortAsc;
+    } else {
+      $this->sortAsc = true;
+    }
+
     $this->sortField = $field;
   }
 
   public function render()
   {
     return view('users-table.users-table', [
-      'users' => User::orderBy($this->sortField)
-      ->paginate($this->perPage),
+      'users' => User::query()
+        ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+        ->paginate($this->perPage),
     ]);
   }
 }
