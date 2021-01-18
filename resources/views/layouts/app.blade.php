@@ -35,6 +35,9 @@
               <li class="nav-item active">
                 <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ route('usersTable') }}">Tabla de Datos de Usuario</a>
+              </li>
             </ul>
           </div>
         </div>
