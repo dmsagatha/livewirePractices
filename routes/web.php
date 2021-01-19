@@ -18,3 +18,6 @@ Route::view('/users-modal', 'users-modal.users')->name('usersModal');
 
 // https://laracasts.com/series/guest-spotlight/episodes/3
 Route::view('/users-table', 'users-table.users')->name('usersTable');
+
+// https://dev.to/dariusdauskurdis/laravel-8-crud-basic-steps-livewire-and-tailwind-10b
+Route::view('/companies', 'companies-modal.companies')->name('companiesModal');

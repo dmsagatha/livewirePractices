@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
+
+    @stack('styles')
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
   </head>
   <body class="d-flex flex-column h-100">
     <header>
@@ -34,6 +39,9 @@
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ route('companiesModal') }}" :active="request()->routeIs('companiesModal')">Compañía con Modal</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="{{ route('usersTable') }}">Tabla de Datos de Usuario</a>
@@ -85,7 +93,11 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    @stack('modals')
+
     @livewireScripts
+
+    @stack('scripts')
 
     <script type="text/javascript">
       window.livewire.on('userStore', () => {
