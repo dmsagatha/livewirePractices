@@ -88,47 +88,58 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div wire:ignore.self class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{ __('Add new user') }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
+      <form autocomplete="off" wire:submit.prevent="createUser">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ __('Add new user') }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
             <div class="form-group">
               <label for="name">{{ __('Full name') }}:</label>
-              <input type="text" class="form-control" wire:model="name" aria-describedby="nameHelp" placeholder="{{ __('Enter full name')}}">
-              @error('name') <span class="text-danger error">{{ $message }}</span> @enderror
+              <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model.defer="state.name" id="name" aria-describedby="nameHelp" placeholder="{{ __('Enter full name')}}">
+              @error('name')
+                <div class="invalid-feedback">
+                {{ $message }}
+                </div>
+              @enderror
             </div>
             
             <div class="form-group">
               <label for="email">{{ __('Email') }}:</label>
-              <input type="email" class="form-control" wire:model="email" aria-describedby="emailHelp" placeholder="{{ __('Enter email')}}">
-              @error('email') <span class="text-danger error">{{ $message }}</span> @enderror
+              <input type="text" class="form-control @error('email') is-invalid @enderror" wire:model.defer="state.email" id="email" aria-describedby="emailHelp" placeholder="{{ __('Enter email')}}">
+              @error('email')
+                <div class="invalid-feedback">
+                {{ $message }}
+                </div>
+              @enderror
             </div>
             
             <div class="form-group">
               <label for="password">{{ __('Password') }}:</label>
-              <input type="password" class="form-control" wire:model="password">
-              @error('password') <span class="text-danger error">{{ $message }}</span> @enderror
+              <input type="password" class="form-control @error('password') is-invalid @enderror" wire:model.defer="state.password" id="password">
+              @error('password')
+                <div class="invalid-feedback">
+                {{ $message }}
+                </div>
+              @enderror
             </div>
             
             <div class="form-group">
               <label for="passwordConfirmation">{{ __('Confirm Password') }}:</label>
-              <input type="password" class="form-control" wire:model="passwordConfirmation">
-              @error('password') <span class="text-danger error">{{ $message }}</span> @enderror
+              <input type="password" class="form-control" wire:model.defer="state.password_confirmation" id="passwordConfirmation">
             </div>
-          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+            <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-          <button type="button" class="btn btn-primary">{{ __('Save changes') }}</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

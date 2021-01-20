@@ -5,16 +5,15 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Validator;
 
 class UsersTable extends Component
 {
   use WithPagination;
 
   protected $paginationTheme = 'bootstrap';
-  
-  public $name;
-  public $email;
-  public $password;
+
+  public $state = [];
 
   public $perPage = 10;
   public $sortField = 'name';
@@ -46,5 +45,22 @@ class UsersTable extends Component
   public function addNew()
   {
     $this->dispatchBrowserEvent('show-form');
+  }
+
+  public function createUser()
+  {
+    $validatedData = Validator::make($this->state, [
+        'name'     => 'required',
+        'email'    => 'required|email|unique:users',
+        'password' => 'required|confirmed',
+    ])->validate();
+
+    $validatedData['password'] = bcrypt($validatedData['password']);
+
+    User::create($validatedData);
+
+    $this->dispatchBrowserEvent('hide-form');
+
+    return redirect()->back();
   }
 }

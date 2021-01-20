@@ -17,6 +17,7 @@ Route::view('/', 'users.users')->name('users');
 Route::view('/users-modal', 'users-modal.users')->name('usersModal');
 
 // https://laracasts.com/series/guest-spotlight/episodes/3
+// Clovo - https://www.youtube.com/watch?v=CBL17MxWi_4
 Route::view('/users-table', 'users-table.users')->name('usersTable');
 
 // https://dev.to/dariusdauskurdis/laravel-8-crud-basic-steps-livewire-and-tailwind-10b
