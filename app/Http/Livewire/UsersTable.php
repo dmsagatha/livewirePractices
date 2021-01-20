@@ -11,6 +11,10 @@ class UsersTable extends Component
   use WithPagination;
 
   protected $paginationTheme = 'bootstrap';
+  
+  public $name;
+  public $email;
+  public $password;
 
   public $perPage = 10;
   public $sortField = 'name';
@@ -37,5 +41,10 @@ class UsersTable extends Component
         ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
         ->paginate($this->perPage),
     ]);
+  }
+
+  public function addNew()
+  {
+    $this->dispatchBrowserEvent('show-form');
   }
 }

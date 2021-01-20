@@ -107,5 +107,11 @@
         $('#updateUserModal').modal('hide');
       });
     </script>
+
+    <script>
+      window.addEventListener('show-form', event => {
+        $('#form').modal('show');
+      })
+    </script>
   </body>
 </html>
