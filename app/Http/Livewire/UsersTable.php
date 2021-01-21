@@ -13,19 +13,26 @@ class UsersTable extends Component
 
   protected $paginationTheme = 'bootstrap';
 
-  public $state = [];
-
+  // sortBy($field) and render()
   public $perPage = 10;
   public $sortField = 'name';
   public $sortAsc = true;
   public $search = '';
+
+  // createUser()
+  public $state = [];
+
+  // show($userId)
+  public $showModal = false;
+  public $user;
+  public $userId;
 
   public function sortBy($field)
   {
     /* Si el campos esta activo, reverse el ordenamiento,
     de lo contrario configure la dirección a 'true' */
     if ($this->sortField === $field) {
-      $this->sortAsc = ! $this->sortAsc;
+      $this->sortAsc = !$this->sortAsc;
     } else {
       $this->sortAsc = true;
     }
@@ -50,9 +57,9 @@ class UsersTable extends Component
   public function createUser()
   {
     $validatedData = Validator::make($this->state, [
-        'name'     => 'required',
-        'email'    => 'required|email|unique:users',
-        'password' => 'required|confirmed',
+      'name' => 'required',
+      'email' => 'required|email|unique:users',
+      'password' => 'required|confirmed',
     ])->validate();
 
     $validatedData['password'] = bcrypt($validatedData['password']);
@@ -62,5 +69,17 @@ class UsersTable extends Component
     $this->dispatchBrowserEvent('hide-form');
 
     return redirect()->back();
+  }
+
+  public function show($userId)
+  {
+    $this->showModal = true;
+    $this->userId = $userId;
+    $this->user = User::find($userId);
+  }
+
+  public function close()
+  {
+    $this->showModal = false;
   }
 }
