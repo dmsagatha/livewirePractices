@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
+
+    @stack('styles')
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
   </head>
   <body class="d-flex flex-column h-100">
     <header>
@@ -26,17 +31,17 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="{{ route('orders.create') }}">Pedidos</a>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('orders/create') ? 'active' : '' }}" href="{{ route('orders.create') }}">Pedidos</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ route('users') }}">Usuarios</a>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('users') }}">Usuarios</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ route('usersModal') }}">Usuario con Modal</a>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('users-modal') ? 'active' : '' }}" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ route('usersTable') }}">Tabla de Datos de Usuario</a>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Tabla de Datos de Usuario</a>
               </li>
             </ul>
           </div>
@@ -54,7 +59,7 @@
       <div class="row">
         <div class="col-12 col-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-          <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+          <small class="d-block mb-3 text-muted">&copy; 2021</small>
         </div>
         <div class="col-6 col-md">
           <h5>Features</h5>
@@ -85,7 +90,11 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    @stack('modals')
+
     @livewireScripts
+
+    @stack('scripts')
 
     <script type="text/javascript">
       window.livewire.on('userStore', () => {
@@ -94,6 +103,16 @@
       window.livewire.on('userUpdated', () => {
         $('#updateUserModal').modal('hide');
       });
+    </script>
+
+    <script>
+      window.addEventListener('show-form', event => {
+        $('#form').modal('show');
+      })
+
+      window.addEventListener('hide-form', event => {
+        $('#form').modal('hide');
+      })
     </script>
   </body>
 </html>
