@@ -82,4 +82,10 @@ class UsersTable extends Component
   {
     $this->showModal = false;
   }
+
+  public function clearSearch()
+  {
+    $this->search = '';
+    $this->perPage = '10';
+  }
 }

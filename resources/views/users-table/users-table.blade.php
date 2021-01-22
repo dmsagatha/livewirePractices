@@ -3,81 +3,90 @@
     Listado de usuarios
     <button wire:click.prevent="addNew" class="btn btn-primary float-right" data-toggle="modal"
       data-target="#addUserModal">
-      <i class="fa fa-plus-circle mr-1"></i>Crear Usuario
+      <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new user') }}
     </button>
   </h3>
 
   <div class="row mb-4">
-    <div class="col form-inline">
+    <div class="col">
+      <input wire:model="search" type="text" class="form-control" placeholder="Buscar ....">
+    </div>
+
+    <div class="col form-inline justify-content-end">
       Por página: &nbsp;
       <select wire:model="perPage" class="form-control">
         <option>10</option>
         <option>15</option>
         <option>25</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
       </select>
     </div>
 
-    <div class="col">
-      <input wire:model="search" type="text" class="form-control" placeholder="Buscar ....">
-    </div>
+    @if ($search !== '')
+      <button wire:click="clearSearch" class="form-input rounded-md shadow-sm mr-3 block">
+        <i class="fa fa-times fa-spin"></i>
+      </button>
+    @endif
   </div>
 
   @if (! $users->isEmpty())
-  <div class="table-responsive-sm">
-    <table class="table table-hover">
-      <thead>
-        <tr class="text-center">
-          <th>
-            <a wire:click.prevent="sortBy('id')" href="#">
-              ID
-              @include('includes._sort-icon', ['field' => 'id'])
-            </a>
-          </th>
-          <th>
-            <a wire:click.prevent="sortBy('name')" href="#">
-              NOMBRE COMPLETO
-              @include('includes._sort-icon', ['field' => 'name'])
-            </a>
-          </th>
-          <th>
-            <a wire:click.prevent="sortBy('email')" href="#">
-              CORREO ELECTRONICO
-              @include('includes._sort-icon', ['field' => 'email'])
-            </a>
-          </th>
-          <th>
-            <a wire:click.prevent="sortBy('created_at')" href="#">
-              CREACION
-              @include('includes._sort-icon', ['field' => 'created_at'])
-            </a>
-          </th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($users as $value)
-        <tr>
-          <td class="text-center">{{ $value->id }}</td>
-          <td>
-            <a wire:click.prevent="show({{ $value->id }})" href="#">{{ $value->name }}</a>
-          </td>
-          <td>{{ $value->email }}</td>
-          <td class="text-center">{{ $value->created_at->format('Y-m-d') }}</td>
-          <td class="text-center" style="display-inline">
-            <a href="">
-              <i class="fa fa-edit mr-2"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-trash text-danger"></i>
-            </a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
+    <div class="table-responsive-sm">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>
+              <a wire:click.prevent="sortBy('id')" href="#">
+                ID
+                @include('includes._sort-icon', ['field' => 'id'])
+              </a>
+            </th>
+            <th>
+              <a wire:click.prevent="sortBy('name')" href="#">
+                {{ __('Name') }}
+                @include('includes._sort-icon', ['field' => 'name'])
+              </a>
+            </th>
+            <th>
+              <a wire:click.prevent="sortBy('email')" href="#">
+                {{ __('Email') }}
+                @include('includes._sort-icon', ['field' => 'email'])
+              </a>
+            </th>
+            <th>
+              <a wire:click.prevent="sortBy('created_at')" href="#">
+                {{ __('Created at') }}
+                @include('includes._sort-icon', ['field' => 'created_at'])
+              </a>
+            </th>
+            <th>{{ __('Actions') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($users as $user)
+            <tr>
+              <td class="text-center">{{ $user->id }}</td>
+              <td>
+                <a wire:click.prevent="show({{ $user->id }})" href="#">{{ $user->name }}</a>
+              </td>
+              <td>{{ $user->email }}</td>
+              <td class="text-center">{{ $user->created_at->format('Y-m-d') }}</td>
+              <td class="text-center" style="display-inline">
+                <a href="">
+                  <i class="fa fa-edit mr-2"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   @else
-  <h5>No hay registros creados</h5>
+    <h5>No hay registros creados</h5>
   @endif
 
   <div class="row">
@@ -157,7 +166,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Mostrar Usuario: {{ $value->name}}</h5>
+          <h5 class="modal-title">Mostrar Usuario: {{ $user->name}}</h5>
           <button wire:click="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -167,16 +176,16 @@
             <table class="table table-hover" style="width: 100%">
               <tbody>
                 <tr>
-                  <th>Nombre Completo:</th>
-                  <td>{{ $value->name}}</td>
+                  <th>{{ __('Name') }}:</th>
+                  <td>{{ $user->name}}</td>
                 </tr>
                 <tr>
-                  <th>Correo Electrónico:</th>
-                  <td>{{ $value->email}}</td>
+                  <th>{{ __('Email') }}:</th>
+                  <td>{{ $user->email}}</td>
                 </tr>
                 <tr>
-                  <th>Fecha Creación:</th>
-                  <td>{{ $value->created_at}}</td>
+                  <th>{{ __('Created at') }}:</th>
+                  <td>{{ $user->created_at}}</td>
                 </tr>
               </tbody>
             </table>
