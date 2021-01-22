@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
-    
+
     <!-- Font Awesome 5.13 -->
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -41,7 +41,7 @@
                 <a class="nav-link {{ request()->is('users-modal') ? 'active' : '' }}" href="{{ route('usersModal') }}">Usuario con Modal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Tabla de Datos de Usuario</a>
+                <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Usuario con Buscador y Modal</a>
               </li>
             </ul>
           </div>

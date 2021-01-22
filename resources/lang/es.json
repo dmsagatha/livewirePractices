@@ -182,5 +182,9 @@
     "Cancel": "Cancelar",
     "Full name": "Nombre completo",
     "Enter full name": "Escriba el nombre completo",
-    "Enter email": "Escriba el correo electrónico"
+    "Enter email": "Escriba el correo electrónico",
+    "Age": "Edad",
+    "Created at": "Fecha de creación",
+    "Are you sure you want to delete ": "Esta seguro de querer eliminar ",
+    "Actions": "Acciones"
 }
