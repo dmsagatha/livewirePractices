@@ -58,4 +58,12 @@ class ProductsModal extends Component
   {
     $this->showModal = false;
   }
+
+  public function delete($productId)
+  {
+    $product = Product::find($productId);
+    if ($product) {
+      $product->delete();
+    }
+  }
 }
