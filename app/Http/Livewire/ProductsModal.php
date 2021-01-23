@@ -18,13 +18,13 @@ class ProductsModal extends Component
 
   protected $rules = [
     'product.name' => 'required',
-    'product.price' => 'required|numeric',
+    'product.price' => 'required|numeric', 10
   ];
 
   public function render()
   {
     return view('products-modal.products-modal', [
-      'products' => Product::latest()->paginate(5)
+      'products' => Product::latest()->paginate(10)
     ]);
   }
 
