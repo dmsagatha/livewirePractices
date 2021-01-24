@@ -35,6 +35,9 @@
                 <a class="nav-link {{ request()->is('orders/create') ? 'active' : '' }}" href="{{ route('orders.create') }}">Pedidos</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link {{ request()->is('products-modal') ? 'active' : '' }}" href="{{ route('productsModal') }}">Productos</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('users') }}">Usuarios</a>
               </li>
               <li class="nav-item">
