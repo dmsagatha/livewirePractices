@@ -18,7 +18,7 @@ class ProductsModal extends Component
 
   protected $rules = [
     'product.name' => 'required',
-    'product.price' => 'required|numeric', 10
+    'product.price' => 'required|numeric',
   ];
 
   public function render()

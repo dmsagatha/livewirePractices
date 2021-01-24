@@ -186,5 +186,8 @@
     "Age": "Edad",
     "Created at": "Fecha de creación",
     "Are you sure you want to delete ": "Esta seguro de querer eliminar ",
-    "Actions": "Acciones"
+    "Actions": "Acciones",
+    "Add new product": "Crear nuevo producto",
+    "Edit": "Editar",
+    "Price": "Precio"
 }
