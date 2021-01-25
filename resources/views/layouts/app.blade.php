@@ -9,9 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
 
-    <!-- Font Awesome 5.13 -->
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}" />
 
     @livewireStyles
 
@@ -91,13 +92,30 @@
       </div>
     </footer>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
     @stack('modals')
 
     @livewireScripts
 
     @stack('scripts')
+
+    <script type="text/javascript">
+      // $(document).ready(function() {
+      jQuery(document).ready(function() {
+        toastr.options = {
+          "positionClass": "toast-top-right",
+          "progressBar": true,
+          "timeOut": "1500",
+        };
+
+        window.addEventListener('hide-form', event => {
+          $('#form').modal('hide');
+          toastr.success(event.detail.message, 'Success!');
+        });
+      });
+    </script>
 
     <script type="text/javascript">
       window.livewire.on('userStore', () => {
@@ -111,10 +129,6 @@
     <script>
       window.addEventListener('show-form', event => {
         $('#form').modal('show');
-      })
-
-      window.addEventListener('hide-form', event => {
-        $('#form').modal('hide');
       })
     </script>
   </body>

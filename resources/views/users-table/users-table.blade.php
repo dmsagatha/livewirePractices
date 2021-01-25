@@ -6,6 +6,10 @@
       <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new user') }}
     </button>
   </h3>
+  
+  {{-- @if (session('message'))
+    @include('includes._messages')
+  @endif --}}
 
   <div class="row mb-4">
     <div class="col">
