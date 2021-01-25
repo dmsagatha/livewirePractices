@@ -10,9 +10,7 @@
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
 
     <link rel="icon" href="{{ asset('favicon.ico') }}">
-
-    <!-- Font Awesome 5.13 -->
-    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+    
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}" />
 
