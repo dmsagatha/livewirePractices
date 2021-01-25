@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+
     @livewireStyles
 
     @stack('styles')
