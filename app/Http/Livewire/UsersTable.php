@@ -66,7 +66,14 @@ class UsersTable extends Component
 
     User::create($validatedData);
 
-    $this->dispatchBrowserEvent('hide-form');
+    // Alert
+    // session()->flash('message', 'Usuario creado satisfactoriamente!');
+
+    // Toastr - https://codeseven.github.io/toastr/
+    // $this->dispatchBrowserEvent('hide-form');
+    $this->dispatchBrowserEvent('hide-form', [
+      'message' => 'Usuario creado satisfactoriamente!'
+    ]);
 
     return redirect()->back();
   }
