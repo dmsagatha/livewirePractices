@@ -12,4 +12,11 @@ class Company extends Model
   protected $fillable = [
     'title'
   ];
+
+  public static function search($query)
+  {
+    return empty($query) ? static::query()
+        : static::where('title', 'like', '%' . $query . '%')
+            ->orWhere('id', 'like', '%' . $query . '%');
+  }
 }

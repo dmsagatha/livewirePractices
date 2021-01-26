@@ -12,14 +12,48 @@
     @include('includes._messages')
   @endif
 
+  <div class="row mb-4">
+    <div class="col">
+      <input wire:model="search" type="text" class="form-control" placeholder="Buscar ....">
+    </div>
+
+    <div class="col form-inline justify-content-end">
+      Por página: &nbsp;
+      <select wire:model="perPage" class="form-control">
+        <option>10</option>
+        <option>15</option>
+        <option>25</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+      </select>
+    </div>
+
+    @if ($search !== '')
+      <button wire:click="clearSearch" class="form-input rounded-md shadow-sm mr-3 block">
+        <i class="fa fa-times fa-spin"></i>
+      </button>
+    @endif
+  </div>
+
   @if (! $companies->isEmpty())
     <div class="table-responsive-sm">
       <table class="table table-hover">
         <thead>
           <tr class="text-center">
-          <th>ID</th>
-          <th>{{ __('Title') }}</th>
-          <th>{{ __('Actions') }}</th>
+            <th>
+              <a wire:click.prevent="sortBy('id')" href="#">
+                ID
+                @include('includes._sort-icon', ['field' => 'id'])
+              </a>
+            </th>
+            <th>
+              <a wire:click.prevent="sortBy('title')" href="#">
+                {{ __('Title') }}
+                @include('includes._sort-icon', ['field' => 'title'])
+              </a>
+            </th>
+            <th>{{ __('Actions') }}</th>
           </tr>
         </thead>
         <tbody>

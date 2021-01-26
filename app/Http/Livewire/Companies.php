@@ -12,16 +12,37 @@ class Companies extends Component
 
   protected $paginationTheme = 'bootstrap';
 
+  // sortBy($field) and render()
+  public $perPage = 10;
+  public $sortField = 'id';
+  public $sortAsc = true;
+  public $search = '';
+
   public $title;
   public $company_id;
 
   // Ventana modal
   public $isOpen = 0;
 
+  public function sortBy($field)
+  {
+    /* Si el campos esta activo, reverse el ordenamiento,
+    de lo contrario configure la dirección a 'true' */
+    if ($this->sortField === $field) {
+      $this->sortAsc = !$this->sortAsc;
+    } else {
+      $this->sortAsc = true;
+    }
+
+    $this->sortField = $field;
+  }
+
   public function render()
   {
     return view('companies.companies', [
-      'companies' => Company::orderBy('id', 'desc')->paginate(10)
+      'companies' => Company::search($this->search)
+      ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+      ->paginate($this->perPage)
     ]);
   }
 
@@ -43,6 +64,12 @@ class Companies extends Component
   {
     $this->title = '';
     $this->company_id = '';
+  }
+
+  public function clearSearch()
+  {
+    $this->search = '';
+    $this->perPage = '10';
   }
 
   public function create()
