@@ -59,4 +59,13 @@ class Companies extends Component
     $this->closeModal();
     $this->resetInputFields();
   }
+
+  public function edit($id)
+  {
+    $company = Company::findOrFail($id);
+    
+    $this->company_id = $id;
+    $this->title = $company->title;
+    $this->openModal();
+  }
 }

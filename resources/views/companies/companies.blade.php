@@ -28,12 +28,12 @@
               <td class="text-center">{{ $company->id }}</td>
               <td>{{ Str::limit($company->title, 25) }}</td>
               <td class="text-center" style="display-inline">
-              <a href="">
-                <i class="fa fa-edit mr-2"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-trash text-danger"></i>
-              </a>
+                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar" data-toggle="modal" data-target="#addEditModal">
+                  <i class="fa fa-edit mr-2"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
               </td>
             </tr>
           @endforeach
