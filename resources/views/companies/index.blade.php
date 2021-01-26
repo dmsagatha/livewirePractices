@@ -4,7 +4,7 @@
   <div class="container">
     <div class="card">
       <h2 class="card-header text-center">
-        CRUD de Usuarios <br> con Modal y Buscador <br>
+        CRUD de Compañías <br> con Modal y Buscador <br>
       </h2>
 
       <h5 class="text-center">
