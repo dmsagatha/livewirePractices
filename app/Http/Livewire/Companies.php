@@ -3,10 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\Company;
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class Companies extends Component
 {
+  use WithPagination;
+
+  protected $paginationTheme = 'bootstrap';
+
   public $title;
   public $company_id;
 
@@ -16,13 +21,17 @@ class Companies extends Component
   public function render()
   {
     return view('companies.companies', [
-      'companies' => Company::orderBy('id', 'desc')->get()
+      'companies' => Company::orderBy('id', 'desc')->paginate(10)
     ]);
   }
 
   public function openModal()
   {
     $this->isOpen = true;
+
+    // Limpiar errores si eran visibles antes
+    $this->resetErrorBag();
+    $this->resetValidation();
   }
   
   public function closeModal()

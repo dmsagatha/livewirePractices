@@ -44,6 +44,16 @@
     <h5>No hay registros creados</h5>
   @endif
 
+  <div class="row">
+    <div class="col">
+      {{ $companies->links() }}
+    </div>
+
+    <div class="col text-right text-muted">
+      Mostrar {{ $companies->firstItem() }} de {{ $companies->lastItem() }} de {{ $companies->total() }}
+    </div>
+  </div>
+
   <!-- Modal -->
   @if($isOpen)
     <div wire:ignore.self class="modal fade" id="addEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
