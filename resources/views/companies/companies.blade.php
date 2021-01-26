@@ -28,10 +28,9 @@
               <td class="text-center">{{ $company->id }}</td>
               <td>{{ Str::limit($company->title, 25) }}</td>
               <td class="text-center" style="display-inline">
-                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar" data-toggle="modal" data-target="#addEditModal">
+                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar"  class="teal-text" data-toggle="modal" data-target="#addEditModal">
                   <i class="fa fa-edit mr-2"></i>
                 </a>
-                <button wire:click="$emit('triggerDelete', {{ $company->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                 <a wire:click="$emit('triggerDelete', {{ $company->id }})" title="Eliminar">
                   <i class="fa fa-trash text-danger"></i>
                 </a>
