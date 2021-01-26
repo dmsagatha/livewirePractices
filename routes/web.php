@@ -22,3 +22,6 @@ Route::view('/users-table', 'users-table.users')->name('usersTable');
 
  // https://github.com/LaravelDaily/LivewireKit-Components/tree/main/05-crud-with-modal/demo
 Route::view('products-modal', 'products-modal.index')->name('productsModal');
+
+// https://dev.to/dariusdauskurdis/laravel-8-crud-basic-steps-livewire-and-tailwind-10b
+Route::view('companies', 'companies.index')->name('companiesModal');
