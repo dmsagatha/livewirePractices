@@ -47,6 +47,9 @@
               <li class="nav-item">
                 <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Usuario con Buscador y Modal</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('companies') ? 'active' : '' }}" href="{{ route('companiesModal') }}">Compañías con Modal</a>
+              </li>
             </ul>
           </div>
         </div>
