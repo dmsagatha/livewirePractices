@@ -18,6 +18,11 @@ class Companies extends Component
   public $sortAsc = true;
   public $search = '';
 
+  public $title;
+  public $company_id;
+
+  public $showModal = false;
+
   public function render()
   {
     return view('companies.companies', [
@@ -25,6 +30,42 @@ class Companies extends Component
         ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
         ->paginate($this->perPage)
     ]);
+  }
+
+  public function create()
+  {
+    $this->showModal = true;
+    $this->resetInputFields();
+  }
+
+  public function store()
+  {
+    $this->validate([
+      'title' => 'required|unique:companies,title,' . $this->company_id,
+    ]);
+
+    $data = [
+      'title' => $this->title
+    ];
+
+    $company = Company::updateOrCreate(['id' => $this->company_id], $data);
+
+    session()->flash('message', $this->company_id ? 'Companía actualizada satisfactoriamente!.' : 'Companía creada satisfactoriamente!.');
+
+    $this->showModal = false;
+    $this->resetInputFields();
+    $this->perPage = '10';
+  }
+
+  private function resetInputFields()
+  {
+    $this->title = '';
+    $this->company_id = '';
+  }
+
+  public function closeModal()
+  {
+    $this->showModal = false;
   }
 
   public function sortBy($field)
