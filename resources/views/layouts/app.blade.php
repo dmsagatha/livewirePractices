@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel Livewire') }}</title>
 
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('/images/favicon.ico') }}">
     
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}" />
