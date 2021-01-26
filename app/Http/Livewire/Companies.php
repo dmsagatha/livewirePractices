@@ -63,9 +63,17 @@ class Companies extends Component
   public function edit($id)
   {
     $company = Company::findOrFail($id);
-    
+
     $this->company_id = $id;
     $this->title = $company->title;
     $this->openModal();
+  }
+
+  public function delete($id)
+  {
+    $this->company_id = $id;
+    Company::find($id)->delete();
+
+    session()->flash('message', 'Companía eliminada satisfactoriamente!.');
   }
 }

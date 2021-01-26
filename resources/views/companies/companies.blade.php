@@ -31,7 +31,8 @@
                 <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar" data-toggle="modal" data-target="#addEditModal">
                   <i class="fa fa-edit mr-2"></i>
                 </a>
-                <a href="">
+                <button wire:click="$emit('triggerDelete', {{ $company->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                <a wire:click="$emit('triggerDelete', {{ $company->id }})" title="Eliminar">
                   <i class="fa fa-trash text-danger"></i>
                 </a>
               </td>
@@ -77,3 +78,27 @@
     </div>
   @endif
 </div>
+
+@push('scripts')
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      @this.on('triggerDelete', companyId => {
+        Swal.fire({
+            title: 'Esta seguro?',
+            text: 'Se eliminará el registro de la Compañía!',
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Delete!'
+        }).then((result) => {
+            if (result.value) {
+                @this.call('delete',companyId)
+            } else {
+                console.log("Canceled");
+            }
+        });
+      });
+    })
+  </script>
+@endpush
