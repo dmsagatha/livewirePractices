@@ -9,19 +9,19 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-  use RefreshDatabase;
+    use RefreshDatabase;
 
-  /** @test */
-  function users_table_is_searchable()
-  {
-    User::factory()->create(['name' => 'foo']);
-    User::factory()->create(['name' => 'bar']);
+    /** @test */
+    public function users_table_is_searchable()
+    {
+        User::factory()->create(['name' => 'foo']);
+        User::factory()->create(['name' => 'bar']);
 
-    Livewire::test('users-table')
+        Livewire::test('users-table')
         ->assertSee('foo')
         ->assertSee('bar')
         ->set('search', 'foo')
         ->assertSee('foo')
         ->assertDontSee('bar');
-  }
+    }
 }

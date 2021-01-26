@@ -26,16 +26,16 @@ class UsersModal extends Component
 
   private function resetInputFields()
   {
-    $this->name     = '';
-    $this->email    = '';
+    $this->name = '';
+    $this->email = '';
     $this->password = '';
   }
 
   public function store()
   {
     $validatedDate = $this->validate([
-      'name'     => 'required',
-      'email'    => 'required|email|unique:users',
+      'name' => 'required',
+      'email' => 'required|email|unique:users',
       'password' => 'required',
     ]);
 
@@ -50,25 +50,25 @@ class UsersModal extends Component
 
   public function edit($id)
   {
-    $user           = User::where('id', $id)->first();
-    $this->ids      = $user->id;
-    $this->name     = $user->name;
-    $this->email    = $user->email;
+    $user = User::where('id', $id)->first();
+    $this->ids = $user->id;
+    $this->name = $user->name;
+    $this->email = $user->email;
     $this->password = $user->password;
   }
 
   public function update()
   {
     $this->validate([
-      'name'  => 'required',
+      'name' => 'required',
       'email' => 'required|email',
     ]);
 
     if ($this->ids) {
       $user = User::find($this->ids);
       $user->update([
-        'name'     => $this->name,
-        'email'    => $this->email,
+        'name' => $this->name,
+        'email' => $this->email,
         'password' => $this->password,
       ]);
 
