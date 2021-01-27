@@ -180,7 +180,7 @@
     "Save changes": "Guardar cambios",
     "Add new user": "Crear nuevo usuario",
     "Add new product": "Crear nuevo producto",
-    "Add new": "Crear nuevo",
+    "Add new company": "Crear nueva compañía",
     "Cancel": "Cancelar",
     "Full name": "Nombre completo",
     "Enter full name": "Escriba el nombre completo",
@@ -190,5 +190,10 @@
     "Are you sure you want to delete ": "Esta seguro de querer eliminar ",
     "Actions": "Acciones",
     "Edit": "Editar",
-    "Price": "Precio"
+    "Price": "Precio",
+    "Enter title": "Escriba el título",
+    "Title": "Título",
+    "Are you sure you want to do this?": "¿Estás seguro de que quieres hacer esto?",
+    "Well done!": "¡Bien hecho!",
+    "Custom Title": "Configurar título"
 }
