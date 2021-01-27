@@ -97,7 +97,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="titleInput">{{ __('Title') }}:</label>
-              <input wire:model.lazy="title" type="text" class="form-control @error('title') is-invalid @enderror" id="titleInput" placeholder="{{ __('Enter title') }}" focus>
+              <input wire:model.lazy="title" type="text" class="form-control @error('title') is-invalid @enderror" id="titleInput" placeholder="{{ __('Enter title') }}">
               @error('title')
                 <div class="invalid-feedback">
                   {{ $message }}
