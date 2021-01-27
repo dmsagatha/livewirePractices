@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 
     @livewireStyles
 
@@ -97,6 +98,8 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
     @stack('modals')
 
@@ -147,6 +150,15 @@
       window.addEventListener('show-form', event => {
         $('#form').modal('show');
       })
+    </script>
+
+    {{-- Mensajes con SweetAlert2 - https://talltips.novate.co.uk/livewire/sweetalert2-with-livewire --}}
+    <script>
+      jQuery(document).ready(function() {
+        window.addEventListener('swal',function(e){ 
+          Swal.fire(e.detail);
+        });
+      });
     </script>
   </body>
 </html>

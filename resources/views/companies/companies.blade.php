@@ -2,7 +2,7 @@
   <h3 class="card-title mb-3">
     Listado de Compañías
 
-    <a wire:click.prevent="create" href="#" class="btn btn-primary float-right">
+    <a wire:click.prevent="create()" href="#" class="btn btn-primary float-right">
       <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new company') }}
     </a>
   </h3>
@@ -61,8 +61,11 @@
               <td class="text-center">{{ $company->id }}</td>
               <td>{{ $company->title }}</td>
               <td class="text-center" style="display-inline">
-                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar"  class="teal-text">
+                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar" class="teal-text">
                   <i class="fa fa-edit mr-2"></i>
+                </a>
+                <a wire:click="$emit('triggerDelete', {{ $company->id }})"title="Eliminar" >
+                  <i class="fa fa-trash text-danger"></i>
                 </a>
               </td>
             </tr>
@@ -115,3 +118,27 @@
     </div>
   </div>
 </div>
+
+@push('scripts')
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      @this.on('triggerDelete', companyId => {
+          Swal.fire({
+              title: 'Esta seguro?',
+              text: 'Se eliminará el registro de la empresa!',
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: '#d33',
+              cancelButtonColor: '#3085d6',
+              confirmButtonText: 'Delete!'
+          }).then((result) => {
+              if (result.value) {
+                  @this.call('delete', companyId)
+              } else {
+                  console.log("Cancelado");
+              }
+          });
+      });
+    })
+  </script>
+@endpush
