@@ -2,7 +2,9 @@
   <h3 class="card-title mb-3">
     Listado de Compañías
 
-    <a wire:click.prevent="create" href="#" class="btn btn-primary">{{ __('Add new company') }}</a>
+    <a wire:click.prevent="create" href="#" class="btn btn-primary float-right">
+      <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new company') }}
+    </a>
   </h3>
 
   @if (session('message'))
@@ -11,7 +13,7 @@
 
   <div class="row mb-4">
     <div class="col">
-      <input wire:model="search" type="text" class="form-control" placeholder="Buscar ....">
+      <input wire:model.debounce.800ms="search" type="text" class="form-control" placeholder="Buscar ....">
     </div>
 
     <div class="col form-inline justify-content-end">
@@ -57,9 +59,11 @@
           @foreach($companies as $company)
             <tr>
               <td class="text-center">{{ $company->id }}</td>
-              <td>{{ Str::limit($company->title, 25) }}</td>
+              <td>{{ $company->title }}</td>
               <td class="text-center" style="display-inline">
-                Acciones
+                <a wire:click.prevent="edit({{ $company->id }})" title="Actualizar"  class="teal-text">
+                  <i class="fa fa-edit mr-2"></i>
+                </a>
               </td>
             </tr>
           @endforeach
@@ -93,7 +97,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="titleInput">{{ __('Title') }}:</label>
-              <input wire:model="title" type="text" class="form-control @error('title') is-invalid @enderror" id="titleInput" placeholder="{{ __('Enter title') }}">
+              <input wire:model.lazy="title" type="text" class="form-control @error('title') is-invalid @enderror" id="titleInput" placeholder="{{ __('Enter title') }}" focus>
               @error('title')
                 <div class="invalid-feedback">
                   {{ $message }}

@@ -57,6 +57,16 @@ class Companies extends Component
     $this->perPage = '10';
   }
 
+  public function edit($id)
+  {
+    $this->showModal = true;
+
+    $company = Company::findOrFail($id);
+
+    $this->company_id = $id;
+    $this->title = $company->title;
+  }
+
   private function resetInputFields()
   {
     $this->title = '';
