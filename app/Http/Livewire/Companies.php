@@ -52,6 +52,11 @@ class Companies extends Component
 
     session()->flash('message', $this->company_id ? 'Companía actualizada satisfactoriamente!😁' : 'Companía creada satisfactoriamente!😁');
 
+    // https://talltips.novate.co.uk/livewire/sweetalert2-with-livewire
+    $this->dispatchBrowserEvent('swal', [
+      'title' => $this->company_id ? 'Companía actualizada satisfactoriamente!😁' : 'Companía creada satisfactoriamente!😁'
+    ]);
+
     $this->showModal = false;
     $this->resetInputFields();
     $this->perPage = '10';
@@ -87,6 +92,12 @@ class Companies extends Component
     // Limpiar los errores si eran visibles antes
     $this->resetErrorBag();
     $this->resetValidation();
+
+    $this->emit('swal:modal', [
+        'type'  => 'success',
+        'title' => 'Success!!',
+        'text'  => "This is a success message",
+    ]);
   }
 
   public function closeModal()

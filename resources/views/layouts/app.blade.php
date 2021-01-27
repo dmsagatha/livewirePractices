@@ -151,5 +151,14 @@
         $('#form').modal('show');
       })
     </script>
+
+    {{-- Mensajes con SweetAlert2 - https://talltips.novate.co.uk/livewire/sweetalert2-with-livewire --}}
+    <script>
+      jQuery(document).ready(function() {
+        window.addEventListener('swal',function(e){ 
+          Swal.fire(e.detail);
+        });
+      });
+    </script>
   </body>
 </html>
