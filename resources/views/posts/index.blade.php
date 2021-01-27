@@ -4,15 +4,15 @@
   <div class="container">
     <div class="card">
       <h2 class="card-header text-center">
-        CRUD de Usuarios <br> con Modal y Buscador <br>
+        CRUD de Publicaciones <br> con Modal<br>
       </h2>
 
       <h5 class="text-center">
-        <a href="https://www.youtube.com/channel/UChOeAJFpRT0qOIEtIhMsFvw" target="_blank">Clovon - Create Bootstrap Modal popup Form using Laravel Livewire</a>
+        <a href="https://www.youtube.com/watch?v=_DQi8TyA9hI" target="_blank">Jack of Traits - Laravel Livewire Tutorial: Adding Modal, Event Listeners, & Delete (part 3)</a>
       </h5>
 
       <div class="card-body">
-        @livewire('users-table')
+        @livewire('posts')
       </div>
     </div>
   </div>

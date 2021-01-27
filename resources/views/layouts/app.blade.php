@@ -51,6 +51,9 @@
               <li class="nav-item">
                 <a class="nav-link {{ request()->is('companies') ? 'active' : '' }}" href="{{ route('companiesModal') }}">Compañías: Paginar/Buscar y Modal</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('posts') ? 'active' : '' }}" href="{{ route('postsModal') }}">Posts Modal</a>
+              </li>
             </ul>
           </div>
         </div>
