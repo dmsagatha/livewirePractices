@@ -104,6 +104,20 @@
 
     @stack('scripts')
 
+    <!-- Modal -->
+    <x-customised-modal title="Configurar título">
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">{{ __('Well done!') }}</h4>
+        <p>{{ __('Are you sure you want to do this?') }}</p>
+      </div>
+    </x-customised-modal>
+
+    <script>
+      $(function(){
+        $('.modal').modal();
+      });
+    </script>
+
     <script type="text/javascript">
       // $(document).ready(function() {
       jQuery(document).ready(function() {

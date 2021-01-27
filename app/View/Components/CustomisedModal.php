@@ -6,14 +6,22 @@ use Illuminate\View\Component;
 
 class CustomisedModal extends Component
 {
-  /**
-   * Create a new component instance.
-   *
-   * @return void
-   */
-  public function __construct()
+  public $title = '';
+  public $id = '';      // Capturar el id
+
+  public function __construct($title, $id = '')
   {
-    //
+    $this->title = $title;
+    $this->id = $id;
+  }
+
+  public function getModelIdString(): string
+  {
+    if ($this->id != '') {
+      return $this->id;
+    }
+
+    return 'model' . rand(1111, 9999);
   }
 
   /**

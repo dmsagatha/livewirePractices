@@ -192,5 +192,8 @@
     "Edit": "Editar",
     "Price": "Precio",
     "Enter title": "Escriba el título",
-    "Title": "Título"
+    "Title": "Título",
+    "Are you sure you want to do this?": "¿Estás seguro de que quieres hacer esto?",
+    "Well done!": "¡Bien hecho!",
+    "Custom Title": "Configurar título"
 }
