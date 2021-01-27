@@ -10,60 +10,49 @@ class Posts extends Component
 {
   use WithPagination;
 
+  protected $paginationTheme = 'bootstrap';
+  public $perPage = 10;
+
   public $title;
   public $content;
-  public $modelId;
 
-  public function render()
+  /* public function hydrate()
   {
-    return view('posts.posts', [
-      'posts' => Post::orderBy('title')->paginate(5)
-    ]);
-  }
+      $this->validate([
+        'title' => 'required|min:10|max:20', //|unique:posts',
+        'content' => 'required',
+      ]);
+  } */
 
   public function save()
   {
-    // Data validation
     $validateData = [
       'title' => 'required|min:10|max:20|unique:posts',
       'content' => 'required',
     ];
 
-    // Default data
     $data = [
       'title' => $this->title,
       'content' => $this->content,
     ];
 
     $this->validate($validateData);
-
-    if ($this->modelId) {
-      Post::find($this->modelId)->update($data);
-      $postInstanceId = $this->modelId;
-    } else {
-      $postInstance = Post::create($data);
-      $postInstanceId = $postInstance->id;
-    }
-
-    $this->emit('refreshParent');
-    $this->dispatchBrowserEvent('closeModal');
+    
+    Post::create($data);
     $this->cleanVars();
-  }
-
-  public function forcedCloseModal()
-  {
-    // Resetear las variables públicas
-    $this->cleanVars();
-
-    // Restablecerán los bags de errores
-    $this->resetErrorBag();
-    $this->resetValidation();
+    session()->flash('success', 'Content Created Successfully.');
   }
 
   private function cleanVars()
   {
-    $this->modelId = null;
     $this->title = null;
     $this->content = null;
+  }
+
+  public function render()
+  {
+    return view('posts.posts', [
+      'posts' => Post::orderBy('title')->paginate($this->perPage)
+    ]);
   }
 }

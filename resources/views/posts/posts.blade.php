@@ -6,10 +6,13 @@
       <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new') }} Post
     </button>
   </h3>
+  
+  @include('posts._fields')
 
   @if ($posts->count())
     <table class="table table-striped">
-      <thead>
+      <thead class="text-center">
+        <th>ID</th>
         <th>{{ __('Title') }}</th>
         <th>{{ __('Description') }}</th>
         <th width="30%">{{ __('Actions') }}</th>
@@ -17,12 +20,13 @@
       <tbody>
         @foreach ($posts as $item)
           <tr>
+            <td>{{ $item->id }}</td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->content }}</td>
             <td>
-              <button wire:click="selectItem({{ $item->id }}, 'update')" class="btn btn-sm btn-success">Update</button>
-              <button wire:click="selectItem({{ $item->id }}, 'delete')" class="btn btn-sm btn-danger">Delete</button>
-              <button wire:click="selectItem({{ $item->id }}, 'showPhotos')" class="btn btn-sm btn-primary">Photos</button>
+              {{-- <button wire:click="selectItem({{ $item->id }}, 'update')" class="btn btn-sm btn-success">Update</button>
+              <button wire:click="selectItem({{ $item->id }}, 'delete')" class="btn btn-sm btn-danger">Delete</button> --}}
+              Acciones
             </td>
           </tr>
         @endforeach
@@ -33,7 +37,7 @@
   @endif
     
   <!-- Modal -->
-  <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{--   <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -43,9 +47,9 @@
           </button>
         </div>
         <div class="modal-body">
-          Formulario
+          @include('posts._fields')
         </div>            
       </div>
     </div>
-  </div>
+  </div> --}}
 </div>

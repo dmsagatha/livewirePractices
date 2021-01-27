@@ -124,6 +124,29 @@
       });
     </script> --}}
 
+    {{-- https://www.youtube.com/watch?v=_DQi8TyA9hI - Jack of Traits  --}}
+    {{-- <script>     
+      window.addEventListener('closeModal', event => {
+          $("#modalForm").modal('hide');                
+      })
+      window.addEventListener('openModal', event => {
+          $("#modalForm").modal('show');
+      })
+      window.addEventListener('openDeleteModal', event => {
+          $("#modalFormDelete").modal('show');
+      })
+      window.addEventListener('closeDeleteModal', event => {
+          $("#modalFormDelete").modal('hide');
+      })
+
+      $(document).ready(function(){        
+          // This event is triggered when the modal is hidden       
+          $("#modalForm").on('hidden.bs.modal', function(){
+              livewire.emit('forcedCloseModal');
+          });
+      });            
+    </script> --}}
+
     <script type="text/javascript">
       // $(document).ready(function() {
       jQuery(document).ready(function() {
