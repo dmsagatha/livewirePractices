@@ -34,8 +34,9 @@ class Companies extends Component
 
   public function create()
   {
-    $this->showModal = true;
+    //$this->showModal = true;
     $this->resetInputFields();
+    $this->openModal();
   }
 
   public function store()
@@ -59,12 +60,11 @@ class Companies extends Component
 
   public function edit($id)
   {
-    $this->showModal = true;
-
     $company = Company::findOrFail($id);
-
     $this->company_id = $id;
     $this->title = $company->title;
+
+    $this->openModal();
   }
 
   private function resetInputFields()
@@ -73,9 +73,19 @@ class Companies extends Component
     $this->company_id = '';
   }
 
+  public function openModal()
+  {
+    $this->showModal = true;
+      
+    // Limpiar los errores si eran visibles antes
+    $this->resetErrorBag();
+    $this->resetValidation();
+  }
+
   public function closeModal()
   {
     $this->showModal = false;
+    $this->resetErrorBag();
   }
 
   public function sortBy($field)
