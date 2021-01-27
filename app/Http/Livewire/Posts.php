@@ -16,6 +16,12 @@ class Posts extends Component
   public $title;
   public $content;
 
+  public $prompt;
+
+  protected $listeners = [
+    'refreshParent' => '$refresh'
+  ];
+
   /* public function hydrate()
   {
       $this->validate([
@@ -39,8 +45,10 @@ class Posts extends Component
     $this->validate($validateData);
     
     Post::create($data);
+    $this->emit('refreshParent');
     $this->cleanVars();
-    session()->flash('success', 'Content Created Successfully.');
+
+    session()->flash('success', 'Publicación creada satisfactoriamente 😁!');
   }
 
   private function cleanVars()
@@ -52,7 +60,7 @@ class Posts extends Component
   public function render()
   {
     return view('posts.posts', [
-      'posts' => Post::orderBy('title')->paginate($this->perPage)
+      'posts' => Post::orderBy('id', 'desc')->paginate($this->perPage)
     ]);
   }
 }
