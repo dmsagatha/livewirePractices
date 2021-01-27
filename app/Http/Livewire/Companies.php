@@ -34,7 +34,6 @@ class Companies extends Component
 
   public function create()
   {
-    //$this->showModal = true;
     $this->resetInputFields();
     $this->openModal();
   }
@@ -51,7 +50,7 @@ class Companies extends Component
 
     $company = Company::updateOrCreate(['id' => $this->company_id], $data);
 
-    session()->flash('message', $this->company_id ? 'Companía actualizada satisfactoriamente!.' : 'Companía creada satisfactoriamente!.');
+    session()->flash('message', $this->company_id ? 'Companía actualizada satisfactoriamente!😁' : 'Companía creada satisfactoriamente!😁');
 
     $this->showModal = false;
     $this->resetInputFields();
@@ -67,6 +66,14 @@ class Companies extends Component
     $this->openModal();
   }
 
+  public function delete($id)
+  {
+    $this->company_id = $id;
+    Company::find($id)->delete();
+
+    session()->flash('message', 'Companía eliminada satisfactoriamente.');
+  }
+
   private function resetInputFields()
   {
     $this->title = '';
@@ -76,7 +83,7 @@ class Companies extends Component
   public function openModal()
   {
     $this->showModal = true;
-      
+
     // Limpiar los errores si eran visibles antes
     $this->resetErrorBag();
     $this->resetValidation();
