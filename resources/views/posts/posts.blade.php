@@ -6,7 +6,6 @@
       <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new') }} Post
     </button>
   </h3>
-  
   @include('posts._fields')
 
   @if ($posts->count())
@@ -24,9 +23,7 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->content }}</td>
             <td>
-              {{-- <button wire:click="selectItem({{ $item->id }}, 'update')" class="btn btn-sm btn-success">Update</button>
-              <button wire:click="selectItem({{ $item->id }}, 'delete')" class="btn btn-sm btn-danger">Delete</button> --}}
-              Acciones
+              <button wire:click="delete({{ $item->id }})" class="btn btn-sm btn-danger">Eliminar</button>
             </td>
           </tr>
         @endforeach
@@ -35,21 +32,21 @@
 
     {{ $posts->links()}}
   @endif
+</div>
     
-  <!-- Modal -->
-{{--   <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Save Post</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          @include('posts._fields')
-        </div>            
+<!-- Modal -->
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Save Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        @include('posts._fields')
+      </div>            
     </div>
-  </div> --}}
+  </div>
 </div>

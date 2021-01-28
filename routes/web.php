@@ -26,5 +26,5 @@ Route::view('products-modal', 'products-modal.index')->name('productsModal');
 // https://dev.to/dariusdauskurdis/laravel-8-crud-basic-steps-livewire-and-tailwind-10b
 Route::view('companies', 'companies.index')->name('companiesModal');
 
-// Jack of Traits - https://www.youtube.com/watch?v=_DQi8TyA9hI
+// Jack of Traits - https://www.youtube.com/c/JackofTraits/playlists
 Route::view('posts', 'posts.index')->name('postsModal');

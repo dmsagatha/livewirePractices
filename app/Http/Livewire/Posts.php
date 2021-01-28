@@ -16,36 +16,35 @@ class Posts extends Component
   public $title;
   public $content;
 
-  public $prompt;
-
   protected $listeners = [
     'refreshParent' => '$refresh'
   ];
 
-  /* public function hydrate()
+  public function hydrate()
   {
       $this->validate([
         'title' => 'required|min:10|max:20', //|unique:posts',
         'content' => 'required',
       ]);
-  } */
+  }
 
   public function save()
   {
-    $validateData = [
+    /* $validateData = [
       'title' => 'required|min:10|max:20|unique:posts',
       'content' => 'required',
-    ];
+    ]; */
 
     $data = [
       'title' => $this->title,
       'content' => $this->content,
     ];
 
-    $this->validate($validateData);
+    //$this->validate($validateData);
     
     Post::create($data);
     $this->emit('refreshParent');
+    //$this->dispatchBrowserEvent('closeModal');
     $this->cleanVars();
 
     session()->flash('success', 'Publicación creada satisfactoriamente 😁!');
@@ -62,5 +61,10 @@ class Posts extends Component
     return view('posts.posts', [
       'posts' => Post::orderBy('id', 'desc')->paginate($this->perPage)
     ]);
+  }
+
+  public function delete($itemId)
+  {
+    Post::destroy($itemId);
   }
 }

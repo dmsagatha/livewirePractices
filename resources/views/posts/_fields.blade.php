@@ -13,5 +13,5 @@
   @endif
 
   <br/>
-  <button wire:click="save()" class="btn btn-primary">{{ __('Save changes') }}</button>
+  <button wire:click="save" class="btn btn-primary">{{ __('Save changes') }}</button>
 </div>
