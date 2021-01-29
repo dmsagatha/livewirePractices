@@ -111,7 +111,6 @@
     "Reset Password": "Restablecer Contraseña",
     "results": "resultados",
     "Role": "Rol",
-    "Save": "Guardar",
     "Saved.": "Guardado.",
     "Select A New Photo": "Seleccione una nueva foto",
     "Send Password Reset Link": "Enviar enlace para restablecer la contraseña",
@@ -177,7 +176,6 @@
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is not verified.": "Su dirección de correo electrónico no está verificada.",
 
-    "Save changes": "Guardar cambios",
     "Add new user": "Crear nuevo usuario",
     "Add new product": "Crear nuevo producto",
     "Add new company": "Crear nueva compañía",
@@ -195,5 +193,7 @@
     "Title": "Título",
     "Are you sure you want to do this?": "¿Estás seguro de que quieres hacer esto?",
     "Well done!": "¡Bien hecho!",
-    "Custom Title": "Configurar título"
+    "Custom Title": "Configurar título",
+    "Save changes": "Guardar cambios",
+    "Save": "Guardar"
 }

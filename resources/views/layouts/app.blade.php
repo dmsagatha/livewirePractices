@@ -121,6 +121,7 @@
       });
     </script> --}}
 
+    {{-- Clovo - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
     <script type="text/javascript">
       // $(document).ready(function() {
       jQuery(document).ready(function() {
@@ -137,6 +138,13 @@
       });
     </script>
 
+    {{-- Clovo - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
+    <script>
+      window.addEventListener('show-form', event => {
+        $('#form').modal('show');
+      })
+    </script>
+
     <script type="text/javascript">
       window.livewire.on('userStore', () => {
         $('#addUserModal').modal('hide');
@@ -144,12 +152,6 @@
       window.livewire.on('userUpdated', () => {
         $('#updateUserModal').modal('hide');
       });
-    </script>
-
-    <script>
-      window.addEventListener('show-form', event => {
-        $('#form').modal('show');
-      })
     </script>
 
     {{-- Mensajes con SweetAlert2 - https://talltips.novate.co.uk/livewire/sweetalert2-with-livewire --}}

@@ -72,12 +72,12 @@
             <tr>
               <td class="text-center">{{ $user->id }}</td>
               <td>
-                <a wire:click.prevent="show({{ $user->id }})" href="#">{{ $user->name }}</a>
+                <a href="#" wire:click.prevent="show({{ $user }})" title="Mostrar">{{ $user->name }}</a>
               </td>
               <td>{{ $user->email }}</td>
               <td class="text-center">{{ $user->created_at->format('Y-m-d') }}</td>
               <td class="text-center" style="display-inline">
-                <a href="">
+                <a href="" wire:click.prevent="edit({{ $user }})" title="Actualizar">
                   <i class="fa fa-edit mr-2"></i>
                 </a>
                 <a href="">
@@ -107,10 +107,16 @@
   <div wire:ignore.self class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-      <form autocomplete="off" wire:submit.prevent="createUser">
+      <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updateUser' : 'createUser' }}">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ __('Add new user') }}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              @if ($showEditModal)
+                <span>{{ __('Edit user') }}</span>
+              @else
+                <span>{{ __('Add new user') }}</span>
+              @endif
+            </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -157,8 +163,17 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-            <button type="submit" class="btn btn-primary">{{ __('Save changes') }}</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <i class="fa fa-times mr-1"></i>{{ __('Cancel') }}
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-save mr-1"></i>
+              @if ($showEditModal)
+                <span>{{ __('Save changes') }}</span>
+              @else
+                <span>{{ __('Save') }}</span>
+              @endif
+            </button>
           </div>
         </div>
       </form>
