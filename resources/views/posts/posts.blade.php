@@ -6,7 +6,6 @@
       <i class="fa fa-plus-circle mr-1"></i>{{ __('Add new') }} Post
     </button>
   </h3>
-  @include('posts._fields')
 
   @if ($posts->count())
     <table class="table table-striped">
