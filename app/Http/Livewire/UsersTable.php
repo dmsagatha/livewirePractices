@@ -23,7 +23,8 @@ class UsersTable extends Component
   public $state = [];
 
   // show($userId)
-  public $showModal = false;
+  public $showModal = false;    // Modal para mostrar el Usuario
+  public $showEditModal = false;
   public $user;
   public $userId;
 
@@ -51,6 +52,7 @@ class UsersTable extends Component
 
   public function addNew()
   {
+    $this->showEditModal = false;
     $this->dispatchBrowserEvent('show-form');
   }
 
@@ -74,15 +76,51 @@ class UsersTable extends Component
     $this->dispatchBrowserEvent('hide-form', [
       'message' => 'Usuario creado satisfactoriamente!'
     ]);
-
-    return redirect()->back();
   }
 
-  public function show($userId)
+  public function edit(User $user)
+  {
+    $this->showEditModal = true;
+
+    $this->user = $user;
+
+    $this->state = $user->toArray();
+
+    // Disparar eventos de ventana del navegador --> app.blade.php
+    $this->dispatchBrowserEvent('show-form');
+  }
+
+  public function updateUser()
+  {
+    $validatedData = Validator::make($this->state, [
+      'name' => 'required',
+      'email' => 'required|email|unique:users,email,' . $this->user->id,
+      'password' => 'sometimes|confirmed',
+    ])->validate();
+
+    if (!empty($validatedData['password'])) {
+      $validatedData['password'] = bcrypt($validatedData['password']);
+    }
+
+    $this->user->update($validatedData);
+
+    $this->dispatchBrowserEvent('hide-form', [
+      'message' => 'Usuario actualizado satisfactoriamente!'
+    ]);
+  }
+
+  /* public function show($userId)
   {
     $this->showModal = true;
     $this->userId = $userId;
     $this->user = User::find($userId);
+  } */
+
+  public function show(User $user)
+  {
+    $this->showModal = true;
+    $this->user = $user;
+    $this->state = $user->toArray();
   }
 
   public function close()
