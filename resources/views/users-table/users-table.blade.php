@@ -193,10 +193,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="fa fa-times mr-1"></i>{{ __('Cancel') }}
+            <i class="fa fa-times mr-2"></i>{{ __('Cancel') }}
           </button>
           <button type="submit" wire:click="deleteUser" class="btn btn-danger">
-            <i class="fa fa-trash mr-1"></i>{{ __('Delete user') }}
+            <i class="fa fa-trash mr-2"></i>{{ __('Delete user') }}
           </button>
         </div>
       </div>

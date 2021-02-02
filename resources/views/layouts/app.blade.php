@@ -114,7 +114,6 @@
         <p>{{ __('Are you sure you want to do this?') }}</p>
       </div>
     </x-customised-modal>
-
     <script>
       $(function(){
         $('.modal').modal();
