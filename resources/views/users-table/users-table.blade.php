@@ -77,10 +77,10 @@
               <td>{{ $user->email }}</td>
               <td class="text-center">{{ $user->created_at->format('Y-m-d') }}</td>
               <td class="text-center" style="display-inline">
-                <a href="" wire:click.prevent="edit({{ $user }})" title="Actualizar">
+                <a wire:click.prevent="edit({{ $user }})" href="" title="Actualizar">
                   <i class="fa fa-edit mr-2"></i>
                 </a>
-                <a href="">
+                <a wire:click.prevent="confirmUserRemoval({{ $user->id }})" href="">
                   <i class="fa fa-trash text-danger"></i>
                 </a>
               </td>
@@ -103,7 +103,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal para Crear y Actualizar -->
   <div wire:ignore.self class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -177,6 +177,29 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Modal para Eliminar -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>{{ __('Delete user') }}</h5>
+        </div>
+        <div class="modal-body">
+          <h4>{{ __('¿Are you sure you want to delete this user?') }}</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <i class="fa fa-times mr-2"></i>{{ __('Cancel') }}
+          </button>
+          <button type="submit" wire:click="deleteUser" class="btn btn-danger">
+            <i class="fa fa-trash mr-2"></i>{{ __('Delete user') }}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

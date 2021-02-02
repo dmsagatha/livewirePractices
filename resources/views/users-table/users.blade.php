@@ -8,7 +8,7 @@
       </h2>
 
       <h5 class="text-center">
-        <a href="https://www.youtube.com/channel/UChOeAJFpRT0qOIEtIhMsFvw">Clovon - Create Bootstrap Modal popup Form using Laravel Livewire</a>
+        <a href="https://www.youtube.com/channel/UChOeAJFpRT0qOIEtIhMsFvw" target="_blank">Clovon - Create Bootstrap Modal popup Form using Laravel Livewire</a>
       </h5>
 
       <div class="card-body">
