@@ -51,7 +51,7 @@ return [
     |
     */
 
-  'url' => env('APP_URL', 'http://livewiredatatable.test/'),
+  'url' => env('APP_URL', 'http://livewirePractices.test/'),
 
   'asset_url' => env('ASSET_URL', null),
 

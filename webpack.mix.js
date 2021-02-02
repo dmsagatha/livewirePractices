@@ -5,7 +5,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sourceMaps();
 
 mix.browserSync({
-  proxy: 'http://livewireDatatable.test/',
+  proxy: 'http://livewirePractices.test/',
   browser: 'Google Chrome',
   open: false
 });

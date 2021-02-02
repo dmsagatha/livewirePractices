@@ -19,14 +19,13 @@ class UsersTable extends Component
   public $sortAsc = true;
   public $search = '';
 
-  // createUser()
   public $state = [];
-
-  // show($userId)
-  public $showModal = false;    // Modal para mostrar el Usuario
-  public $showEditModal = false;
   public $user;
-  public $userId;
+  public $userIdBeingRemoved = null;
+
+  public $showEditModal = false;
+  public $showModal = false;    // Modal para mostrar el Usuario
+  public $userId;               // show($userId)
 
   public function sortBy($field)
   {
@@ -52,6 +51,7 @@ class UsersTable extends Component
 
   public function addNew()
   {
+    $this->state = [];    // o $this->reset();
     $this->showEditModal = false;
     $this->dispatchBrowserEvent('show-form');
   }
@@ -132,5 +132,22 @@ class UsersTable extends Component
   {
     $this->search = '';
     $this->perPage = '10';
+  }
+
+  public function confirmUserRemoval($userId)
+  {
+    $this->userIdBeingRemoved = $userId;
+
+    $this->dispatchBrowserEvent('show-delete-modal');
+  }
+
+  public function deleteUser()
+  {
+    $user = User::findOrFail($this->userIdBeingRemoved);
+    $user->delete();
+
+    $this->dispatchBrowserEvent('hide-delete-modal', [
+      'message' => 'Usuario eliminado satisfactoriamente!'
+    ]);
   }
 }

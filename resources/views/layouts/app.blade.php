@@ -126,7 +126,7 @@
       // $(document).ready(function() {
       jQuery(document).ready(function() {
         toastr.options = {
-          "positionClass": "toast-top-right",
+          "positionClass": "toast-bottom-right",
           "progressBar": true,
           "timeOut": "1500",
         };
@@ -142,7 +142,16 @@
     <script>
       window.addEventListener('show-form', event => {
         $('#form').modal('show');
-      })
+      });
+
+      window.addEventListener('show-delete-modal', event => {
+        $('#confirmationModal').modal('show');
+      });
+
+      window.addEventListener('hide-delete-modal', event => {
+        $('#confirmationModal').modal('hide');
+        toastr.success(event.detail.message, 'Success!');
+      });
     </script>
 
     <script type="text/javascript">
