@@ -21,7 +21,7 @@ class UsersCrud extends Component
   public function render()
   {
     return view('livewire.users-crud', [
-      'users' => User::orderBy('name')->paginate(10)
+      'users' => User::orderBy('id', 'desc')->paginate(10)
     ]);
   }
 

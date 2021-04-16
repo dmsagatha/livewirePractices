@@ -19,6 +19,12 @@ class Products extends Component
     ];
   }
 
+  public function render()
+  {
+    info($this->orderProducts);
+    return view('livewire.products');
+  }
+
   public function addProduct()
   {
     $this->orderProducts[] = [
@@ -31,11 +37,5 @@ class Products extends Component
   {
     unset($this->orderProducts[$index]);
     $this->orderProducts = array_values($this->orderProducts);
-  }
-
-  public function render()
-  {
-    info($this->orderProducts);
-    return view('livewire.products');
   }
 }
