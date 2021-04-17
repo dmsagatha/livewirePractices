@@ -6,7 +6,7 @@
   @endif
 
   <div class="table-responsive">
-    <table class="table">
+    <table class="table align-middle table-striped table-hover table-bordered dt-responsive nowrap">
       <thead>
         <th>#</th>
         <th>Nombres</th>
