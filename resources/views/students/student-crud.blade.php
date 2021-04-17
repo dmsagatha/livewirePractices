@@ -24,6 +24,11 @@
         {{ session('message') }}
       </div>
     @endif
+    @if ($messageText != '')
+        <div class="alert alert-info">
+            {{ $messageText }}
+        </div>
+    @endif
 
     @if($UpdateStudent)
       @include('students.update')

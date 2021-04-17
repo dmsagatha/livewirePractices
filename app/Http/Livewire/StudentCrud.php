@@ -10,6 +10,7 @@ class StudentCrud extends Component
   public $fname, $lname, $email, $gender, $phone;
   public $students, $student_id, $search;
   public $UpdateStudent = false;
+  public $messageText = '';
 
   public function render()
   {
@@ -69,10 +70,9 @@ class StudentCrud extends Component
       'gender'    => $this->gender,
     ]);
 
-    $this->messageText = 'Estudiante ' . $this->fname . ' esta guardada.';
-
     $this->rest();
-    session()->flash('message', 'Estudiante creado satisfactoriamente!.');
+    // session()->flash('message', 'Estudiante creado satisfactoriamente!.');
+    $this->messageText = 'Estudiante ' . $this->fname . '  creado satisfactoriamente!.';
   }
 
   public function edit($id)
@@ -106,7 +106,8 @@ class StudentCrud extends Component
 
       $this->rest();
       $this->UpdateStudent = false;
-      session()->flash('message', 'Estudiante actualizado satisfactoriamente!.');
+      // session()->flash('message', 'Estudiante actualizado satisfactoriamente!.');
+      $this->messageText = 'Estudiante actualizado satisfactoriamente!.';
     }
 
   }
@@ -119,6 +120,7 @@ class StudentCrud extends Component
       $record->delete();
     }
 
-    session()->flash('message', 'Estudiante eliminado!.');
+    // session()->flash('message', 'Estudiante eliminado!.');
+    $this->messageText = 'Estudiante eliminado!.';
   }
 }
