@@ -8,12 +8,17 @@ use Livewire\Component;
 class StudentCrud extends Component
 {
   public $fname, $lname, $email, $gender, $phone;
-  public $data, $student_id, $search;
+  public $students, $student_id, $search;
   public $UpdateStudent = false;
 
   public function render()
   {
-    $this->data = Student::orderBy('id', 'desc')->get();
+    // $this->students = Student::orderBy('id', 'desc')->get();
+    $this->students = Student::where('firstname', 'like', '%' . $this->search . '%')
+      ->Orwhere('lastname', 'like', '%' . $this->search . '%')
+      ->Orwhere('gender', 'like', '%' . $this->search . '%')
+      ->get();
+
     return view('students.student-crud');
   }
 
@@ -45,11 +50,11 @@ class StudentCrud extends Component
     ];
   }
 
-	// Ir validando a medida que se escribe
-	public function updated($key, $value)
-	{
-		$this->validateOnly($key);
-	}
+  // Ir validando a medida que se escribe
+  public function updated($key, $value)
+  {
+    $this->validateOnly($key);
+  }
 
   public function insert()
   {
@@ -63,10 +68,10 @@ class StudentCrud extends Component
       'gender'    => $this->gender,
     ]);
 
-		$this->messageText = 'Estudiante ' . $this->fname . ' esta guardada.';
+    $this->messageText = 'Estudiante ' . $this->fname . ' esta guardada.';
 
     $this->rest();
-    session()->flash('message', 'Estudiante creado correctamente.');
+    session()->flash('message', 'Estudiante creado satisfactoriamente!.');
   }
 
   public function edit($id)
@@ -100,7 +105,7 @@ class StudentCrud extends Component
 
       $this->rest();
       $this->UpdateStudent = false;
-      session()->flash('message', 'Estudiante actualizado correctamente.');
+      session()->flash('message', 'Estudiante actualizado satisfactoriamente!.');
     }
 
   }

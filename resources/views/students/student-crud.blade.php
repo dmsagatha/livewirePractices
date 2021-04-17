@@ -1,4 +1,15 @@
 <div>
+  <div class="col-md-4" style="float: right;">
+    <input wire:model="search" type="text" class="form-control" placeholder="Buscar aquí......">
+  </div>
+  <br><br>
+
+  @if(session()->has('message'))
+    <div class="alert alert-success">
+      {{ session('message') }}
+    </div>
+  @endif
+
   @if($UpdateStudent)
     @include('students.update')
   @else
@@ -19,7 +30,7 @@
         <th colspan="3">Acciones</th>
       </thead>
       <tbody>
-        @foreach($data as $row)
+        @foreach($students as $row)
           <tr>
             <td>{{ $row->id }}</td>
             <td>{{ $row->firstname }}</td>
