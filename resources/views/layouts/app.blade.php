@@ -40,16 +40,19 @@
                 <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('users') }}">Usuarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ request()->is('products-modal') ? 'active' : '' }}" href="{{ route('productsModal') }}">Productos Modal</a>
+                <a class="nav-link {{ request()->is('products-modal') ? 'active' : '' }}" href="{{ route('productsModal') }}">Productos - Modal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ request()->is('users-modal') ? 'active' : '' }}" href="{{ route('usersModal') }}">Usuario Modal</a>
+                <a class="nav-link {{ request()->is('users-modal') ? 'active' : '' }}" href="{{ route('usersModal') }}">Usuario - Modal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Usuario Modal-Paginar-Buscar</a>
+                <a class="nav-link {{ request()->is('users-table') ? 'active' : '' }}" href="{{ route('usersTable') }}">Usuario - Modal-Buscar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {{ request()->is('companies') ? 'active' : '' }}" href="{{ route('companiesModal') }}">Compañías: Paginar/Buscar y Modal</a>
+                <a class="nav-link {{ request()->is('companies') ? 'active' : '' }}" href="{{ route('companiesModal') }}">Compañías - Modal-Buscar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ request()->is('students') ? 'active' : '' }}" href="{{ route('students') }}">Estudiantes - Buscar</a>
               </li>
             </ul>
           </div>

@@ -30,3 +30,8 @@ Route::view('products-modal', 'products-modal.index')->name('productsModal');
 // Companies
 // https://dev.to/dariusdauskurdis/laravel-8-crud-basic-steps-livewire-and-tailwind-10b
 Route::view('companies', 'companies.index')->name('companiesModal');
+
+// StudentCrud
+// https://futureprogrammers.ga/laravel-livewire-crud-project-step-by-step/?i=1
+// Programming with Singhateh
+Route::view('students','students.home')->name('students');
