@@ -33,7 +33,8 @@
               <a wire:click="edit({{ $row->id }})" href="#!" title="Actualizar">
                 <i class="fas fa-marker text-primary me-2"></i>
               </a>
-              <a href="#!" title="Eliminar">
+              <a wire:click="destroy({{ $row->id }})" onclick="confirm('Va a eliminar el registro?') || event.stopImmediatePropagation()"
+               href="#!" title="Eliminar">
                 <i class="far fa-trash-alt text-danger"></i>
               </a>
             </td>
