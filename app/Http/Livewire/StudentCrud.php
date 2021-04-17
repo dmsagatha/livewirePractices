@@ -14,7 +14,8 @@ class StudentCrud extends Component
   public function render()
   {
     // $this->students = Student::orderBy('id', 'desc')->get();
-    $this->students = Student::where('firstname', 'like', '%' . $this->search . '%')
+    $this->students = Student::orderBy('id', 'desc')
+      ->where('firstname', 'like', '%' . $this->search . '%')
       ->Orwhere('lastname', 'like', '%' . $this->search . '%')
       ->Orwhere('gender', 'like', '%' . $this->search . '%')
       ->get();
@@ -117,5 +118,7 @@ class StudentCrud extends Component
       $record = Student::where('id', $id);
       $record->delete();
     }
+
+    session()->flash('message', 'Estudiante eliminado!.');
   }
 }
