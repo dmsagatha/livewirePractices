@@ -45,25 +45,33 @@ class StudentCrud extends Component
     ];
   }
 
-  protected $rules = [
+  /* protected $rules = [
     'fname'  => 'required|min:3',
     'lname'  => 'required|min:3',
     'email'  => 'required|email|unique:students',
     'phone'  => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
     'gender' => 'required',
-  ];
+  ]; */
+
+	// Ir validando a medida que se escribe
+	public function updated($key, $value)
+	{
+		$this->validateOnly($key);
+	}
 
   public function insert()
   {
     $this->validate();
 
-    $student = Student::create([
+    Student::create([
       'firstname' => $this->fname,
       'lastname'  => $this->lname,
       'email'     => $this->email,
       'phone'     => $this->phone,
       'gender'    => $this->gender,
     ]);
+
+		$this->messageText = 'Estudiante ' . $this->fname . ' esta guardada.';
 
     $this->rest();
     session()->flash('message', 'Estudiante creado correctamente.');
