@@ -123,7 +123,7 @@
       });
     </script> --}}
 
-    {{-- Clovo - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
+    {{-- Clovon - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
     <script type="text/javascript">
       // $(document).ready(function() {
       jQuery(document).ready(function() {
@@ -140,7 +140,7 @@
       });
     </script>
 
-    {{-- Clovo - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
+    {{-- Clovon - https://www.youtube.com/watch?v=CBL17MxWi_4 --}}
     <script>
       window.addEventListener('show-form', event => {
         $('#form').modal('show');

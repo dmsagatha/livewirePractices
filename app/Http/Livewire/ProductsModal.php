@@ -15,11 +15,20 @@ class ProductsModal extends Component
   public $showModal = false;
   public $productId;
   public $product;
-
+/*
   protected $rules = [
-    'product.name' => 'required',
+    'product.name' => 'required|unique:products,name,' . $this->productId,
     'product.price' => 'required|numeric',
   ];
+*/
+
+  public function rules()
+  {
+    return [
+      'product.name'  => 'required|unique:products,name,' . $this->productId,
+      'product.price' => 'required|numeric',
+    ];
+  }
 
   public function render()
   {
@@ -28,18 +37,18 @@ class ProductsModal extends Component
     ]);
   }
 
+  public function create()
+  {
+    $this->showModal = true;
+    $this->product   = null;
+    $this->productId = null;
+  }
+
   public function edit($productId)
   {
     $this->showModal = true;
     $this->productId = $productId;
     $this->product = Product::find($productId);
-  }
-
-  public function create()
-  {
-    $this->showModal = true;
-    $this->product = null;
-    $this->productId = null;
   }
 
   public function save()
