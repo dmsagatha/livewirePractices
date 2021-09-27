@@ -27,19 +27,6 @@ class UsersTable extends Component
   public $showModal = false;    // Modal para mostrar el Usuario
   public $userId;               // show($userId)
 
-  public function sortBy($field)
-  {
-    /* Si el campos esta activo, reverse el ordenamiento,
-    de lo contrario configure la dirección a 'true' */
-    if ($this->sortField === $field) {
-      $this->sortAsc = !$this->sortAsc;
-    } else {
-      $this->sortAsc = true;
-    }
-
-    $this->sortField = $field;
-  }
-
   public function render()
   {
     return view('users-table.users-table', [
@@ -149,5 +136,18 @@ class UsersTable extends Component
     $this->dispatchBrowserEvent('hide-delete-modal', [
       'message' => 'Usuario eliminado satisfactoriamente!'
     ]);
+  }
+
+  public function sortBy($field)
+  {
+    /* Si el campos esta activo, reverse el ordenamiento,
+    de lo contrario configure la dirección a 'true' */
+    if ($this->sortField === $field) {
+      $this->sortAsc = !$this->sortAsc;
+    } else {
+      $this->sortAsc = true;
+    }
+
+    $this->sortField = $field;
   }
 }
